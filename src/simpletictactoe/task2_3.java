@@ -1,7 +1,7 @@
 package simpletictactoe;
 
 import java.util.Scanner;
-
+// РАБОТАЕТ С o x -
 class task2_3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -35,10 +35,10 @@ class task2_3 {
         }
         System.out.println(line);
         int sumX = 0;
-        int sumY = 0;
+        int sumO = 0;
         boolean emptyCells = false;
         boolean winsX = false;
-        boolean winsY = false;
+        boolean winsO = false;
         for (int i = 0; i < tikTakArr.length; i++) {
             for (char ch : tikTakArr[i]) {
                 if (ch == '_') {
@@ -48,31 +48,35 @@ class task2_3 {
                 if (ch == 'x') {
                     sumX++;
                 }
-                if (ch == 'y') {
-                    sumY++;
+                if (ch == 'o') {
+                    sumO++;
                 }
             }
 
             if (tikTakArr[i][0] == 'x' && tikTakArr[i][1] == 'x' && tikTakArr[i][2] == 'x' ||
-                tikTakArr[0][i] == 'x' && tikTakArr[1][i] == 'x' && tikTakArr[2][i] == 'x') {
+                tikTakArr[0][i] == 'x' && tikTakArr[1][i] == 'x' && tikTakArr[2][i] == 'x' ||
+                tikTakArr[0][0] == 'x' && tikTakArr[1][1] == 'x' && tikTakArr[2][2] == 'x' ||
+                tikTakArr[0][2] == 'x' && tikTakArr[1][1] == 'x' && tikTakArr[2][0] == 'x'){
                 winsX = true;
             }
-            if (tikTakArr[i][0] == 'y' && tikTakArr[i][1] == 'y' && tikTakArr[i][2] == 'y' ||
-                tikTakArr[0][i] == 'y' && tikTakArr[1][i] == 'y' && tikTakArr[2][i] == 'y') {
-                winsY = true;
+            if (tikTakArr[i][0] == 'o' && tikTakArr[i][1] == 'o' && tikTakArr[i][2] == 'o' ||
+                tikTakArr[0][i] == 'o' && tikTakArr[1][i] == 'o' && tikTakArr[2][i] == 'o'||
+                tikTakArr[0][0] == 'o' && tikTakArr[1][1] == 'o' && tikTakArr[2][2] == 'o' ||
+                tikTakArr[0][2] == 'o' && tikTakArr[1][1] == 'o' && tikTakArr[2][0] == 'o') {
+                winsO = true;
             }
         }
-        if (winsX && winsY || sumX - sumY >= 2 || sumY - sumX >= 2 ){
+        if (winsX && winsO || sumX - sumO >= 2 || sumO - sumX >= 2 ){
             System.out.println("Impossible");
 
-        } else if(!winsX && !winsY && emptyCells){
+        } else if(!winsX && !winsO && emptyCells){
             System.out.println("Game not finished");
-        }else if (!winsX && !winsY && !emptyCells){
+        }else if (!winsX && !winsO && !emptyCells){
             System.out.println("End");
         } else if (winsX){
             System.out.println("X wins");
-        } else if (winsY){
-            System.out.println("Y wins");
+        } else if (winsO){
+            System.out.println("O wins");
         }
     }
 }

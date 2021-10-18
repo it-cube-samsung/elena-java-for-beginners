@@ -1,7 +1,7 @@
 package simpletictactoe;
 
 import java.util.Scanner;
-
+// РАБОТАЕТ С y x -
 class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -54,11 +54,15 @@ class Main {
             }
 
             if (tikTakArr[i][0] == 'x' && tikTakArr[i][1] == 'x' && tikTakArr[i][2] == 'x' ||
-                tikTakArr[0][i] == 'x' && tikTakArr[1][i] == 'x' && tikTakArr[2][i] == 'x') {
+                tikTakArr[0][i] == 'x' && tikTakArr[1][i] == 'x' && tikTakArr[2][i] == 'x' ||
+                tikTakArr[0][0] == 'x' && tikTakArr[1][1] == 'x' && tikTakArr[2][2] == 'x' ||
+                tikTakArr[0][2] == 'x' && tikTakArr[1][1] == 'x' && tikTakArr[2][0] == 'x') {
                 winsX = true;
             }
             if (tikTakArr[i][0] == 'y' && tikTakArr[i][1] == 'y' && tikTakArr[i][2] == 'y' ||
-                tikTakArr[0][i] == 'y' && tikTakArr[1][i] == 'y' && tikTakArr[2][i] == 'y') {
+                tikTakArr[0][i] == 'y' && tikTakArr[1][i] == 'y' && tikTakArr[2][i] == 'y' ||
+                tikTakArr[0][0] == 'y' && tikTakArr[1][1] == 'y' && tikTakArr[2][2] == 'y' ||
+                tikTakArr[0][2] == 'y' && tikTakArr[1][1] == 'y' && tikTakArr[2][0] == 'y') {
                 winsY = true;
             }
         }
@@ -77,3 +81,4 @@ class Main {
     }
 }
 
+//xy-yx-y-x
