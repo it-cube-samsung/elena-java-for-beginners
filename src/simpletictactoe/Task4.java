@@ -38,30 +38,31 @@ class Task4 {
 
         System.out.println("Enter the coordinates: ");
         boolean inputCorrect = false;
-        var userX = scanner.nextInt();
-        var userY = scanner.nextInt();
-        while (!inputCorrect){
-            if (userX < 1 || userY < 1 || userY > 3 || userY > 3){
-                System.out.println("You should enter numbers!");
-                System.out.println("Enter the coordinates: ");
-
-                userX = scanner.nextInt();
-                userY = scanner.nextInt();
-            } else if(tikTakArr[userX - 1][userY - 1] != '_'){
-
-                System.out.println("This cell is occupied! Choose another one!");
-                System.out.println("Enter the coordinates: ");
-
-                userX = scanner.nextInt();
-                userY = scanner.nextInt();
-            } else {
-                tikTakArr[userX - 1][userY - 1] = 'x';
-                inputCorrect = true;
-            }
-
-        }
-
-
+        String s = scanner.next();
+        System.out.println((int)s.charAt(0));
+        if (s.charAt(0) < '0' || s.charAt(0) > '9')
+//        var userX = scanner.nextInt();
+//        var userY = scanner.nextInt();
+//        while (!inputCorrect){
+//            if (userX < 1 || userY < 1 || userY > 3 || userY > 3){
+//                System.out.println("You should enter numbers!");
+//                System.out.println("Enter the coordinates: ");
+//
+//                userX = scanner.nextInt();
+//                userY = scanner.nextInt();
+//            } else if(tikTakArr[userX - 1][userY - 1] != '_'){
+//
+//                System.out.println("This cell is occupied! Choose another one!");
+//                System.out.println("Enter the coordinates: ");
+//
+//                userX = scanner.nextInt();
+//                userY = scanner.nextInt();
+//            } else {
+//                tikTakArr[userX - 1][userY - 1] = 'x';
+//                inputCorrect = true;
+//            }
+//
+//        }
 
         System.out.println(line);
         for (int i = 0; i < tikTakArr.length; i++) {
@@ -69,11 +70,6 @@ class Task4 {
                 if (j == 0) {
                     System.out.print(side + space);
                 }
-//                if(userGame.length() <= num){
-//                    tikTakArr[i][j] = empty;
-//                } else {
-//                    tikTakArr[i][j] = userGame.charAt(num);
-//                }
                 System.out.print(tikTakArr[i][j] + space);
                 if (j == 2) {
                     System.out.print(side);
