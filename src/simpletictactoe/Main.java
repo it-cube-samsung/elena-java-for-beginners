@@ -33,6 +33,16 @@ class Main {
             }
             System.out.println();
         }
+
+        System.out.println("Enter the coordinates: ");
+        int userX = scanner.nextInt();
+        int userY = scanner.nextInt();
+        if (tikTakArr[userX - 1][userY - 1] == '_'){
+            tikTakArr[userX - 1][userY - 1] = 'x';
+        } else if(userX < 1 || userY < 1 || userY > 3 || userY > 3){
+            System.out.println("You should enter numbers!");
+        }
+
         System.out.println(line);
         int sumX = 0;
         int sumY = 0;
