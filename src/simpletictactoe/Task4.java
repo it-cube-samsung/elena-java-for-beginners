@@ -61,6 +61,8 @@ class Task4 {
 
         }
 
+
+
         System.out.println(line);
         for (int i = 0; i < tikTakArr.length; i++) {
             for (int j = 0; j < tikTakArr[i].length; j++) {
