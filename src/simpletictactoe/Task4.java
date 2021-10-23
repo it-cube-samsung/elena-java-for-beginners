@@ -125,4 +125,5 @@ class Task4 {
             System.out.println("Y wins");
         }
     }
+
 }
