@@ -95,7 +95,7 @@ class Task4 {
                 if (ch == 'x') {
                     sumX++;
                 }
-                if (ch == 'y') {
+                if (ch == 'o') {
                     sumY++;
                 }
             }
