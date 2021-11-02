@@ -18,11 +18,10 @@ public class Task4_2 {
         boolean winsO = false;
 
         for (int i = 0; i < tikTakArr.length; i++) {
-            Arrays.fill(tikTakArr[i], '_');
-            System.out.println();
+            Arrays.fill(tikTakArr[i], empty);
         }
 
-        while (!inputCorrect) {
+        do{
             System.out.println(line);
             for (int i = 0; i < tikTakArr.length; i++) {
                 for (int j = 0; j < tikTakArr[i].length; j++) {
@@ -42,27 +41,30 @@ public class Task4_2 {
             var userX = scanner.next().charAt(0);
             var userY = scanner.next().charAt(0);
 
-            if (userX < '0' || userX > '9' || userY < '0' || userY > '9'){
-                System.out.println("You should enter numbers!");
-                System.out.println("Enter the coordinates: ");
+                if (userX < '0' || userX > '9' || userY < '0' || userY > '9'){
+                    System.out.println("You should enter numbers!");
+//                    System.out.println("Enter the coordinates: ");
+//
+//                    userX = scanner.next().charAt(0);
+//                    userY = scanner.next().charAt(0);
+                } else if (userX < '1' || userY < '1' || userX > '3' || userY > '3') {
+                    System.out.println("Coordinates should be from 1 to 3!");
+//                    System.out.println("Enter the coordinates: ");
+//
+//                    userX = scanner.next().charAt(0);
+//                    userY = scanner.next().charAt(0);
+                }else if (tikTakArr[Character.getNumericValue(userX) - 1][Character.getNumericValue(userY) - 1] != '_') {
+                    System.out.println("This cell is occupied! Choose another one!");
+//                    System.out.println("Enter the coordinates: ");
+//
+//                    userX = scanner.next().charAt(0);
+//                    userY = scanner.next().charAt(0);
+                }
 
-                userX = scanner.next().charAt(0);
-                userY = scanner.next().charAt(0);
-            } else if (userX < '1' || userY < '1' || userX > '3' || userY > '3') {
-                System.out.println("Coordinates should be from 1 to 3!");
-                System.out.println("Enter the coordinates: ");
 
-                userX = scanner.next().charAt(0);
-                userY = scanner.next().charAt(0);
-            }else if (tikTakArr[Character.getNumericValue(userX) - 1][Character.getNumericValue(userY) - 1] != '_') {
+            } while(!inputCorrect);
 
-                System.out.println("This cell is occupied! Choose another one!");
-                System.out.println("Enter the coordinates: ");
-
-                userX = scanner.next().charAt(0);
-                userY = scanner.next().charAt(0);
-            }
-
+        while (!inputCorrect){
             if (numStep % 2 == 0) {
                 tikTakArr[Character.getNumericValue(userX) - 1][Character.getNumericValue(userY) - 1] = 'x';
             } else {
