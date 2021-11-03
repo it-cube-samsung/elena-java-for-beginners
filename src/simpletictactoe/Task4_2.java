@@ -69,7 +69,8 @@ public class Task4_2 {
 
                 }
             }
-            if (!winsX && !winsO && !emptyCells){
+            numStep++;
+            if (!winsX && !winsO && numStep == 9){
                 System.out.println("End");
                 inputCorrect = true;
             } else if (winsX){
@@ -81,7 +82,7 @@ public class Task4_2 {
                 inputCorrect = true;
             }
 
-            numStep++;
+
         } while(!inputCorrect);
 
         System.out.println(line);
