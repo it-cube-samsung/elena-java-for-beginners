@@ -23,16 +23,11 @@ public class Task4_2 {
         do{
             System.out.println(line);
             for (int i = 0; i < tikTakArr.length; i++) {
+                System.out.print(side + space);
                 for (int j = 0; j < tikTakArr[i].length; j++) {
-                    if (j == 0) {
-                        System.out.print(side + space);
-                    }
                     System.out.print(tikTakArr[i][j] + space);
-                    if (j == 2) {
-                        System.out.print(side);
-                    }
                 }
-                System.out.println();
+                System.out.println(side);
             }
             System.out.println(line);
 
@@ -55,13 +50,13 @@ public class Task4_2 {
             tikTakArr[indexX][indexY] = player;
 
             for (int i = 0; i < tikTakArr.length; i++) {
-                for (char ch : tikTakArr[i]) {
-                    if (ch == empty) {
-                        emptyCells = true;
-                        break;
-                    }
+//                for (char ch : tikTakArr[i]) {
+//                    if (ch == empty) {
+//                        emptyCells = true;
+//                        break;
+//                    }
+//                }
 
-                }
                 if (tikTakArr[i][0] == player && tikTakArr[i][1] == player && tikTakArr[i][2] == player ||
                         tikTakArr[0][i] == player && tikTakArr[1][i] == player && tikTakArr[2][i] == player ||
                         tikTakArr[0][0] == player && tikTakArr[1][1] == player && tikTakArr[2][2] == player ||
@@ -88,18 +83,14 @@ public class Task4_2 {
 
             numStep++;
         } while(!inputCorrect);
+
         System.out.println(line);
         for (int i = 0; i < tikTakArr.length; i++) {
+            System.out.print(side + space);
             for (int j = 0; j < tikTakArr[i].length; j++) {
-                if (j == 0) {
-                    System.out.print(side + space);
-                }
                 System.out.print(tikTakArr[i][j] + space);
-                if (j == 2) {
-                    System.out.print(side);
-                }
             }
-            System.out.println();
+            System.out.println(side);
         }
         System.out.println(line);
     }
