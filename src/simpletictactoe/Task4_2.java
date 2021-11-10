@@ -18,136 +18,74 @@ public class Task4_2 {
         boolean winsO = false;
 
         for (int i = 0; i < tikTakArr.length; i++) {
-            Arrays.fill(tikTakArr[i], '_');
-            System.out.println();
+            Arrays.fill(tikTakArr[i], empty);
         }
-
-        while (!inputCorrect) {
+        do{
             System.out.println(line);
             for (int i = 0; i < tikTakArr.length; i++) {
+                System.out.print(side + space);
                 for (int j = 0; j < tikTakArr[i].length; j++) {
-                    if (j == 0) {
-                        System.out.print(side + space);
-                    }
                     System.out.print(tikTakArr[i][j] + space);
-                    if (j == 2) {
-                        System.out.print(side);
-                    }
                 }
-                System.out.println();
+                System.out.println(side);
             }
             System.out.println(line);
 
             System.out.println("Enter the coordinates: ");
             var userX = scanner.next().charAt(0);
             var userY = scanner.next().charAt(0);
-
-            if (userX < '0' || userX > '9' || userY < '0' || userY > '9'){
-                System.out.println("You should enter numbers!");
-                System.out.println("Enter the coordinates: ");
-
-                userX = scanner.next().charAt(0);
-                userY = scanner.next().charAt(0);
-            } else if (userX < '1' || userY < '1' || userX > '3' || userY > '3') {
-                System.out.println("Coordinates should be from 1 to 3!");
-                System.out.println("Enter the coordinates: ");
-
-                userX = scanner.next().charAt(0);
-                userY = scanner.next().charAt(0);
-            }else if (tikTakArr[Character.getNumericValue(userX) - 1][Character.getNumericValue(userY) - 1] != '_') {
-
-                System.out.println("This cell is occupied! Choose another one!");
-                System.out.println("Enter the coordinates: ");
-
-                userX = scanner.next().charAt(0);
-                userY = scanner.next().charAt(0);
-            }
-
-            if (numStep % 2 == 0) {
-                tikTakArr[Character.getNumericValue(userX) - 1][Character.getNumericValue(userY) - 1] = 'x';
-            } else {
-                tikTakArr[Character.getNumericValue(userX) - 1][Character.getNumericValue(userY) - 1] = 'o';
-
-            }
+                if (userX < '0' || userX > '9' || userY < '0' || userY > '9'){
+                    System.out.println("You should enter numbers!");
+                    continue;
+                } else if (userX < '1' || userY < '1' || userX > '3' || userY > '3') {
+                    System.out.println("Coordinates should be from 1 to 3!");
+                    continue;
+                }else if (tikTakArr[Character.getNumericValue(userX) - 1][Character.getNumericValue(userY) - 1] != '_') {
+                    System.out.println("This cell is occupied! Choose another one!");
+                    continue;
+                }
+            int indexX = Character.getNumericValue(userX) - 1;
+            int indexY = Character.getNumericValue(userY) - 1;
+            char player = (numStep % 2 == 0) ? 'x' : 'o';
+            tikTakArr[indexX][indexY] = player;
 
             for (int i = 0; i < tikTakArr.length; i++) {
-                for (char ch : tikTakArr[i]) {
-                    if (ch == '_') {
-                        emptyCells = true;
-                        break;
+                if (tikTakArr[i][0] == player && tikTakArr[i][1] == player && tikTakArr[i][2] == player ||
+                        tikTakArr[0][i] == player && tikTakArr[1][i] == player && tikTakArr[2][i] == player ||
+                        tikTakArr[0][0] == player && tikTakArr[1][1] == player && tikTakArr[2][2] == player ||
+                        tikTakArr[0][2] == player && tikTakArr[1][1] == player && tikTakArr[2][0] == player) {
+                    if(player == 'x'){
+                        winsX = true;
+                    } else {
+                        winsO = true;
                     }
 
                 }
-                if (tikTakArr[i][0] == 'x' && tikTakArr[i][1] == 'x' && tikTakArr[i][2] == 'x' ||
-                        tikTakArr[0][i] == 'x' && tikTakArr[1][i] == 'x' && tikTakArr[2][i] == 'x' ||
-                        tikTakArr[0][0] == 'x' && tikTakArr[1][1] == 'x' && tikTakArr[2][2] == 'x' ||
-                        tikTakArr[0][2] == 'x' && tikTakArr[1][1] == 'x' && tikTakArr[2][0] == 'x') {
-                    winsX = true;
-                }
-                if (tikTakArr[i][0] == 'o' && tikTakArr[i][1] == 'o' && tikTakArr[i][2] == 'o' ||
-                        tikTakArr[0][i] == 'o' && tikTakArr[1][i] == 'o' && tikTakArr[2][i] == 'o' ||
-                        tikTakArr[0][0] == 'o' && tikTakArr[1][1] == 'o' && tikTakArr[2][2] == 'o' ||
-                        tikTakArr[0][2] == 'o' && tikTakArr[1][1] == 'o' && tikTakArr[2][0] == 'o') {
-                    winsO = true;
-                }
             }
-             if (!winsX && !winsO && !emptyCells){
-                 System.out.println(line);
-                 for (int i = 0; i < tikTakArr.length; i++) {
-                     for (int j = 0; j < tikTakArr[i].length; j++) {
-                         if (j == 0) {
-                             System.out.print(side + space);
-                         }
-                         System.out.print(tikTakArr[i][j] + space);
-                         if (j == 2) {
-                             System.out.print(side);
-                         }
-                     }
-                     System.out.println();
-                 }
-                 System.out.println(line);
+            numStep++;
+            if (!winsX && !winsO && numStep == 9){
                 System.out.println("End");
-
-                 inputCorrect = true;
-
-             } else if (winsX){
-                 System.out.println(line);
-                 for (int i = 0; i < tikTakArr.length; i++) {
-                     for (int j = 0; j < tikTakArr[i].length; j++) {
-                         if (j == 0) {
-                             System.out.print(side + space);
-                         }
-                         System.out.print(tikTakArr[i][j] + space);
-                         if (j == 2) {
-                             System.out.print(side);
-                         }
-                     }
-                     System.out.println();
-                 }
-                 System.out.println(line);
+                inputCorrect = true;
+            } else if (winsX){
                 System.out.println("X wins");
-                 inputCorrect = true;
+                inputCorrect = true;
 
-             } else if (winsO){
-                 System.out.println(line);
-                 for (int i = 0; i < tikTakArr.length; i++) {
-                     for (int j = 0; j < tikTakArr[i].length; j++) {
-                         if (j == 0) {
-                             System.out.print(side + space);
-                         }
-                         System.out.print(tikTakArr[i][j] + space);
-                         if (j == 2) {
-                             System.out.print(side);
-                         }
-                     }
-                     System.out.println();
-                 }
-                 System.out.println(line);
-                System.out.println("Y wins");
-                 inputCorrect = true;
+            } else if (winsO){
+                System.out.println("O wins");
+                inputCorrect = true;
+            }
 
-             }
-             numStep++;
+
+        } while(!inputCorrect);
+
+        System.out.println(line);
+        for (int i = 0; i < tikTakArr.length; i++) {
+            System.out.print(side + space);
+            for (int j = 0; j < tikTakArr[i].length; j++) {
+                System.out.print(tikTakArr[i][j] + space);
+            }
+            System.out.println(side);
         }
+        System.out.println(line);
     }
 }
