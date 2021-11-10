@@ -4,6 +4,7 @@ import java.util.Scanner;
 // РАБОТАЕТ С y x -
 class Task4 {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         char [][] tikTakArr = new char[3][3];
         String line = "---------";
