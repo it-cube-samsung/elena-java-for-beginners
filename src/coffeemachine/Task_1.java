@@ -1,6 +1,6 @@
-package simplechatbot;
+package coffeemachine;
 
-public class Task1_1 {
+public class Task_1 {
     public static void main(String[] args) {
         System.out.println("Starting to make a coffee\n" +
                 "Grinding coffee beans\n" +
