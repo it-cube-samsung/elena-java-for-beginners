@@ -26,29 +26,15 @@ public class Task2_1 {
             System.out.println("No, I can make only " + needCups + " cup(s) of coffee");
         }
 
-
-
     }
 
     public static int getNumCups(int waterHas, int milkHas, int coffeeHas) {
-        // for one cup:
-        int water = 200;
-        int milk = 50;
-        int coffeeBeans = 15;
+        int needWater = 200;
+        int needMilk = 50;
+        int needCoffeeBeans = 15;
 
-        int cupsHas;
-        int drugNum;
-
-        cupsHas = waterHas / water;
-        drugNum = milkHas / milk;
-        if (drugNum < cupsHas){
-            cupsHas = drugNum;
-        }
-        drugNum = coffeeHas / coffeeBeans;
-        if (drugNum < cupsHas){
-            cupsHas = drugNum;
-        }
-
-        return cupsHas;
+        int maxCups = Math.min(waterHas / needWater, milkHas / needMilk);
+        maxCups = Math.min(maxCups, coffeeHas / needCoffeeBeans);
+        return maxCups;
     }
 }
