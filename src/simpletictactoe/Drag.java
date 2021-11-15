@@ -1,8 +1,66 @@
 package simpletictactoe;
-
+import java.util.Arrays;
 import java.util.Scanner;
 
+
+
 public class Drag {
+
+        public static int a=0,b;
+        public static void main(String[] args) {
+            Scanner in = new Scanner(System.in);
+
+            int n = 5;
+            int[][] a = new int[5][5];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (i + j >= n) {
+                        a[i][j] = 1;
+                    }
+                    if (i + j < n) {
+                        a[i][j] = 0;
+                    }
+
+                    if (i + j > n) {
+                        a[i][j] = 2;
+                    }
+                }
+            }
+
+            for (int i = 0; i < a.length; i++) {
+                System.out.println(Arrays.toString(a[i]));
+            }
+        }
+
+
+//    static int s(int[] c){
+//        int f = 1;
+//        for (int a: c)
+//            f = (a % 3 == 0) ? a : f;
+//        return f;
+//    }
+//    public static void main(String[] args) {
+
+
+//        int a = 100001000;
+//        int i = 1;
+//        while (a > 0){
+//
+//            System.out.println("*" + i);
+//            a++;
+//            a %= 1000;
+//            i++;
+//        }
+//        long a[] = new long[]{1,2,3};
+//        int c = 0;
+//        public static int s(int[] c){
+//            int f = 1;
+//            for(int a: c) f = (a%3==0)?a:f;
+//            return f;
+//        }
+
+
+
 //    public static void main(String[] args) {
 //        Scanner scanner = new Scanner(System.in);
 //
