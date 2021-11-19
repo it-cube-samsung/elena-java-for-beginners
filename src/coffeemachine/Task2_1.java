@@ -6,7 +6,6 @@ public class Task2_1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-
         System.out.println("Write how many ml of water the coffee machine has: ");
         int waterHas = scanner.nextInt();
         System.out.println("Write how many ml of milk the coffee machine has:");
