@@ -20,85 +20,62 @@ public class Task5 {
         System.out.println("Write action (buy, fill, take, remaining, exit): ");
         String action = scanner.next();
         switch (action) {
-            case "buy" -> {
+            case "buy": {
                 System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back:");
                 String actionCoffee = scanner.next();
                 if (actionCoffee == "back") {
-                    actionCheck();
+                    break;
                 } else {
-                    buyCoffee(actionCoffee);
+                    chooseCoffee(actionCoffee);
                 }
+                break;
             }
-            case "fill" -> fillMachine();
-            case "take" -> takeMoneyOut();
-            case "exit" -> System.exit(0);
-            case "remaining" -> printCoffeeMachineHas();
-            default -> actionCheck();
-        }
-    }
-
-    public static void buyCoffee(String num) {
-        int waterForEspresso = 250;
-        int coffeeBeansForEspresso = 16;
-        int costEspresso = 4;
-
-        int waterForLatte = 350;
-        int milkForLatte = 75;
-        int coffeeBeansForLatte = 20;
-        int costLatte = 7;
-
-        int waterForCappuccino = 200;
-        int milkForCappuccino = 100;
-        int coffeeBeansForCappuccino = 12;
-        int costCuppuccino = 6;
-
-
-
-        switch (num) {
-            case "1":
-                boolean boo = lackCoffeeResources(waterForEspresso, 0, coffeeBeansForEspresso);
-                if (!boo){
-                    hasWater -= waterForEspresso;
-                    hasCoffeeBeans -= coffeeBeansForEspresso;
-                    hasMoney += costEspresso;
-                    hasDisposableCups--;
-                    System.out.println("I have enough resources, making you a coffee!");
-
-                } else {
-                    System.out.println("I don't have enough resources");
-                }
+            case "fill": fillMachine();
                 break;
-            case "2":
-                boo = lackCoffeeResources(waterForLatte, milkForLatte, coffeeBeansForLatte);
-                if (!boo){
-                    hasWater -= waterForLatte;
-                    hasMilk -= milkForLatte;
-                    hasCoffeeBeans -= coffeeBeansForLatte;
-                    hasMoney += costLatte;
-                    hasDisposableCups--;
-                    System.out.println("I have enough resources, making you a coffee!");
-
-                } else {
-                    System.out.println("I don't have enough resources");
-                }
+            case "take": takeMoneyOut();
                 break;
-            case "3":
-                boo = lackCoffeeResources(waterForCappuccino, milkForCappuccino, coffeeBeansForCappuccino);
-                if (!boo){
-                    hasWater -= waterForCappuccino;
-                    hasMilk -= milkForCappuccino;
-                    hasCoffeeBeans -= coffeeBeansForCappuccino;
-                    hasMoney += costCuppuccino;
-                    hasDisposableCups--;
-                    System.out.println("I have enough resources, making you a coffee!");
-
-                } else {
-                    System.out.println("I don't have enough resources");
-                }
+            case "exit":  System.exit(0);
+                break;
+            case "remaining":  printCoffeeMachineHas();
                 break;
             default:
+                break;
+
         }
     }
+
+    static void chooseCoffee (String num) {
+        switch (num) {
+            case "1":
+                makeCoffee(250, 0, 16);
+                hasMoney += 4;
+                break;
+            case "2":
+                makeCoffee(350, 75, 20);
+                hasMoney += 7;
+                break;
+            case "3":
+                makeCoffee(200, 100, 12);
+                hasMoney += 6;
+                break;
+            default:
+                System.out.println("Unsuitable action, please, try again");
+        }
+    }
+    static  void makeCoffee(int needWater, int needMilk, int needBeans){
+        boolean boo = lackCoffeeResources(needWater, needMilk, needBeans);
+        if (!boo){
+            hasWater -= needWater;
+            hasMilk -= needMilk;
+            hasCoffeeBeans -= needBeans;
+            hasDisposableCups--;
+            System.out.println("I have enough resources, making you a coffee!");
+        } else {
+            System.out.println("I don't have enough resources");
+        }
+
+    }
+
     public static boolean lackCoffeeResources(int water, int milk, int beans){
         return water > hasWater || milk > hasMilk || beans > hasCoffeeBeans;
     }

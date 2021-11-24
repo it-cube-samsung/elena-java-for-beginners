@@ -15,13 +15,13 @@ public class Task3 {
         System.out.println("Write how many cups of coffee you will need: ");
         int needCups = scanner.nextInt();
         int cupsHas = getNumCups(waterHas, milkHas, coffeeHas);
+
         if (needCups <= cupsHas) {
             System.out.print("Yes, I can make that amount of coffee");
+            if (needCups < cupsHas) {
+                System.out.println(" (and even " + (cupsHas - needCups) + " more than that)");
         }
-        if(needCups < cupsHas){
-            System.out.println(" (and even " + (cupsHas - needCups) + " more than that)");
-        }
-        if (needCups > cupsHas) {
+        } else {
             System.out.println("No, I can make only " + needCups + " cup(s) of coffee");
         }
 

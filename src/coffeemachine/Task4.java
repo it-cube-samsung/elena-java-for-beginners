@@ -22,7 +22,7 @@ public class Task4 {
             case "buy":
                 System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
                 int actionCoffee = scanner.nextInt();
-                buyCoffee(actionCoffee);
+                chooseCoffee(actionCoffee);
                 break;
             case "fill":
                 fillMachine();
@@ -34,45 +34,31 @@ public class Task4 {
                 System.out.println("Unsuitable action, please, try again");
         }
     }
-    public static void buyCoffee(int num) {
-        int waterForEspresso = 250;
-        int coffeeBeansForEspresso = 16;
-        int costEspresso = 4;
 
-        int waterForLatte = 350;
-        int milkForLatte = 75;
-        int coffeeBeansForLatte = 20;
-        int costLatte = 7;
-
-        int waterForCappuccino = 200;
-        int milkForCappuccino = 100;
-        int coffeeBeansForCappuccino = 12;
-        int costCuppuccino = 6;
-
+    static void chooseCoffee (int num) {
         switch (num) {
             case 1:
-                hasWater -= waterForEspresso;
-                hasCoffeeBeans -= coffeeBeansForEspresso;
-                hasMoney += costEspresso;
-                hasDisposableCups--;
+                makeCoffee(250, 0, 16);
+                hasMoney += 4;
                 break;
             case 2:
-                hasWater -= waterForLatte;
-                hasMilk -= milkForLatte;
-                hasCoffeeBeans -= coffeeBeansForLatte;
-                hasMoney += costLatte;
-                hasDisposableCups--;
+                makeCoffee(350, 75, 20);
+                hasMoney += 7;
                 break;
             case 3:
-                hasWater -= waterForCappuccino;
-                hasMilk -= milkForCappuccino;
-                hasCoffeeBeans -= coffeeBeansForCappuccino;
-                hasMoney += costCuppuccino;
-                hasDisposableCups--;
+                makeCoffee(200, 100, 12);
+                hasMoney += 6;
                 break;
             default:
                 System.out.println("Unsuitable action, please, try again");
         }
+
+    }
+    static  void makeCoffee(int needWater, int needMilk, int needBeans){
+        hasWater -= needWater;
+        hasMilk -= needMilk;
+        hasCoffeeBeans -= needBeans;
+        hasDisposableCups--;
     }
 
     public static void fillMachine() {
