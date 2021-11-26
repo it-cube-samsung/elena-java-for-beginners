@@ -22,7 +22,7 @@ public class Task3 {
                 System.out.println(" (and even " + (cupsHas - needCups) + " more than that)");
         }
         } else {
-            System.out.println("No, I can make only " + needCups + " cup(s) of coffee");
+            System.out.println("No, I can make only " + cupsHas + " cup(s) of coffee");
         }
 
     }
