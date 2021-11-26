@@ -7,7 +7,10 @@ public class Task_6 {
     static boolean exit = false;
 
     public static void main(String[] args) {
+        CoffeeMachine coffeeMachine = new CoffeeMachine();
         while (!exit) {
+            scanner.nextLine();
+            coffeeMachine.
             actionCheck();
         }
     }
