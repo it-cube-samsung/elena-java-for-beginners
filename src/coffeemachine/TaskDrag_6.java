@@ -2,7 +2,7 @@ package coffeemachine;
 
 import java.util.Scanner;
 
-public class Task_6 {
+public class TaskDrag_6 {
     static Scanner scanner = new Scanner(System.in);
     static boolean exit = false;
 
@@ -10,38 +10,60 @@ public class Task_6 {
         CoffeeMachine coffeeMachine = new CoffeeMachine();
         while (!exit) {
             scanner.nextLine();
-            coffeeMachine.actionCheck();
+            coffeeMachine.start();
         }
     }
 
+    public static String getStartAction () {
+        return scanner.next();
+    }
 
-        public static void actionCheck() {
-            System.out.println("Write action (buy, fill, take, remaining, exit): ");
-            String action = scanner.next();
-            switch (action) {
-                case "buy": {
-                    System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back:");
-                    String actionCoffee = scanner.next();
-                    if (actionCoffee == "back") {
-                        break;
-                    } else {
-                        CoffeeMachine.chooseCoffee(actionCoffee);
-                    }
+
+
+}
+
+class CoffeeMachine {
+    static int hasMilk = 540;
+    static int hasWater = 400;
+    static int hasCoffeeBeans = 120;
+    static int hasMoney = 550;
+    static int hasDisposableCups = 9;
+    static boolean booHaveAction = false;
+
+    public static void start() {
+        actionCheck();
+
+    }
+
+    public static void actionCheck() {
+        System.out.println("Write action (buy, fill, take, remaining, exit): ");
+        booHaveAction = true;
+//        String action = scanner.next();
+        String action = TaskDrag_6.getStartAction();
+        switch (action) {
+            case "buy": {
+                System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back:");
+                String actionCoffee = scanner.next();
+                if (actionCoffee == "back") {
                     break;
+                } else {
+                    CoffeeMachine.chooseCoffee(actionCoffee);
                 }
-                case "fill": fillMachine();
-                    break;
-                case "take": CoffeeMachine.takeMoneyOut();
-                    break;
-                case "exit":  System.exit(0);
-                    break;
-                case "remaining":  CoffeeMachine.printCoffeeMachineHas();
-                    break;
-                default:
-                    break;
-
+                break;
             }
+            case "fill": fillMachine();
+                break;
+            case "take": CoffeeMachine.takeMoneyOut();
+                break;
+            case "exit":  System.exit(0);
+                break;
+            case "remaining":  CoffeeMachine.printCoffeeMachineHas();
+                break;
+            default:
+                break;
+
         }
+    }
 
     public static void fillMachine() {
         System.out.println("Write how many ml of water you want to add:");
@@ -59,15 +81,6 @@ public class Task_6 {
         CoffeeMachine.putCups(numAdd);
     }
 
-
-}
-
-class CoffeeMachine {
-    static int hasMilk = 540;
-    static int hasWater = 400;
-    static int hasCoffeeBeans = 120;
-    static int hasMoney = 550;
-    static int hasDisposableCups = 9;
 
     static void chooseCoffee (String num) {
         switch (num) {
