@@ -23,53 +23,6 @@ public class Task_6 {
             coffeeMachine.start(command);
         }
     }
-
-
-//        public static void actionCheck() {
-//            System.out.println("Write action (buy, fill, take, remaining, exit): ");
-//            String action = scanner.next();
-//            switch (action) {
-//                case "buy": {
-//                    System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back:");
-//                    String actionCoffee = scanner.next();
-//                    if (actionCoffee == "back") {
-//                        break;
-//                    } else {
-//                        CoffeeMachine.chooseCoffee(actionCoffee);
-//                    }
-//                    break;
-//                }
-//                case "fill": fillMachine();
-//                    break;
-//                case "take": CoffeeMachine.takeMoneyOut();
-//                    break;
-//                case "exit":  System.exit(0);
-//                    break;
-//                case "remaining":  CoffeeMachine.printCoffeeMachineHas();
-//                    break;
-//                default:
-//                    break;
-//
-//            }
-//        }
-
-    public void fillMachine() {
-        System.out.println("Write how many ml of water you want to add:");
-        int numAdd = scanner.nextInt();
-//        CoffeeMachine.putWater(numAdd);
-        System.out.println("Write how many ml of milk you want to add:");
-        numAdd = scanner.nextInt();
-//        CoffeeMachine.putMilk(numAdd);
-
-        System.out.println("Write how many grams of coffee beans you want to add:");
-        numAdd = scanner.nextInt();
-//        CoffeeMachine.putBeans(numAdd);
-        System.out.println("Write how many disposable cups of coffee you want to add:");
-        numAdd = scanner.nextInt();
-//        CoffeeMachine.putCups(numAdd);
-    }
-
-
 }
 
 enum Status {
@@ -84,8 +37,8 @@ class CoffeeMachine {
     int hasCoffeeBeans = 120;
     int hasMoney = 550;
     int hasDisposableCups = 9;
+    int num = 1;
 
-    String state = "default";
     Status status = Status.DEFAULT;
 
     void start(String command) {
@@ -93,14 +46,28 @@ class CoffeeMachine {
         if (status == Status.BUY) {
             chooseCoffee(command);
         }
+        if (status == Status.FILL) {
+            if (num == 1) {
+                System.out.println("Write how many ml of milk you want to add:");
+
+            } else if(num == 2){
+                System.out.println("Write how many grams of coffee beans you want to add:");
+
+            } else if (num == 3) {
+                System.out.println("Write how many disposable cups of coffee you want to add:");
+
+            }
+            fillMachine(command);
+        }
         switch (command) {
             case "buy": {
                 System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back:");
                 status = Status.BUY;
-                //change state
                 break;
             }
             case "fill":
+                status = Status.FILL;
+                System.out.println("Write how many ml of water you want to add:");
                 break;
             case "take":
                 takeMoneyOut();
@@ -114,25 +81,52 @@ class CoffeeMachine {
         }
     }
 
+    public void fillMachine(String command) {
+        Integer com = Integer.valueOf(command);
+        switch (num) {
+            case 1:
+                putWater(com);
+                num++;
+                break;
+
+            case 2:
+                putMilk(com);
+                num++;
+                break;
+
+            case 3:
+                putBeans(com);
+                num++;
+                break;
+
+            case 4:
+                putCups(com);
+                status = Status.DEFAULT;
+                num++;
+                break;
+
+        }
+    }
+
     void chooseCoffee (String num) {
         switch (num) {
             case "1":
                 makeCoffee(250, 0, 16);
                 hasMoney += 4;
-                state = "default";
+                status = Status.DEFAULT;
                 break;
             case "2":
                 makeCoffee(350, 75, 20);
                 hasMoney += 7;
-                state = "default";
+                status = Status.DEFAULT;
                 break;
             case "3":
                 makeCoffee(200, 100, 12);
                 hasMoney += 6;
-                state = "default";
+                status = Status.DEFAULT;
                 break;
             case "back":
-                state = "defaul";
+                status = Status.DEFAULT;
                 break;
             default:
                 System.out.println("Unsuitable action, please, try again");
@@ -154,7 +148,6 @@ class CoffeeMachine {
         } else {
             System.out.println("I don't have enough resources");
         }
-
     }
 
     private void takeMoneyOut() {
