@@ -10,28 +10,16 @@ public class Task_1 {
         int bulls = 0;
         int cows = 0;
         String code = "9846";
-
+        int turn = 1;
         while (bulls < 4) {
-            int turn = 1;
+
             System.out.println("Turn " + turn + ". Answer:");
             String answer = scan.nextLine();
             cows = getCows(code, answer);
             bulls = getBulls(code, answer);
 
-//            if (cows > 0 && bulls > 0) {
-//                System.out.println("Grade: " + bulls + " bull and " + cows + " cow.");
-//            } else  if (bulls > 0 && cows == 0) {
-//                System.out.println("Grade: " + bulls + " bull.");
-//            }/* else  if (cows > 0 && bulls == 0) {
-//                System.out.println("Grade: " + bulls + " bull.");
-//            } */else if (cows == 0 ) {
-//                System.out.println("Grade: " + cows + " cow.");
-//            } else  if (bulls == 0) {
-//                System.out.println("Grade: " + bulls + " bull.");
-//            } else {
-//                System.out.println("Grade: None.");
-//            }
-                System.out.println("Grade: " + bulls + " bull and " + cows + " cow.");
+
+            System.out.println("Grade: " + bulls + " bull and " + cows + " cow.");
 
             turn++;
         }
@@ -43,16 +31,17 @@ public class Task_1 {
 
     public static int getCows( String code, String answer) {
         int cow = 0;
-        for (int i = 0; i <- answer.length() ; i++) {
-            for (int j = 0; j <= i; j++) {
-                if (code.charAt(j) == answer.charAt(i) && code.charAt(j) != answer.charAt(j)){
+        for (int i = 0; i < answer.length() ; i++) {
+            for (int j = 0; j < answer.length(); j++) {
+                if (code.charAt(i) == answer.charAt(j) && code.charAt(j) != answer.charAt(j)){
                     cow++;
+//                    System.out.println(answer.charAt(j) + "    " + code.charAt(i));
                 }
             }
         }
         return cow;
     }
-
+// && code.charAt(j) != answer.charAt(j)
     public  static int getBulls(String code, String answer) {
         int bulls = 0;
         for (int i = 0; i < answer.length(); i++) {
