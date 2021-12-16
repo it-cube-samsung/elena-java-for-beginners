@@ -23,6 +23,7 @@ public class Task_4 {
         }
 
         System.out.println("Okay, let's start a game!");
+        System.out.println(secretCode);
 
 
 

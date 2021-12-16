@@ -32,12 +32,12 @@ public class Task_1 {
     public static int getCows( String code, String answer) {
         int cow = 0;
         for (int i = 0; i < answer.length() ; i++) {
-//            for (int j = 0; j < answer.length(); j++) {
-//                if (code.charAt(i) == answer.charAt(j) && code.charAt(j) != answer.charAt(j)){
-//                    cow++;
-////                    System.out.println(answer.charAt(j) + "    " + code.charAt(i));
-//                }
-//            }
+            for (int j = 0; j < answer.length(); j++) {
+                if (code.charAt(i) == answer.charAt(j) && code.charAt(j) != answer.charAt(j)){
+                    cow++;
+//                    System.out.println(answer.charAt(j) + "    " + code.charAt(i));
+                }
+            }
 
 
 
