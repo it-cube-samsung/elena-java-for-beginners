@@ -7,21 +7,13 @@ public class Task_4 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         StringBuilder secretCode = new StringBuilder();
-        Random random = new Random();
         int bulls = 0;
         int cows = 0;
         int turn = 0;
         System.out.println("Please, enter the secret code's length:");
         int lengthSecretCode = scan.nextInt();
 
-        while (secretCode.length() < lengthSecretCode) {
-            int randomNum = random.nextInt(9);
-
-            if (randomNum == 0 && secretCode.length() == 0) {
-                randomNum++;
-            }
-            secretCode.append(randomNum);
-        }
+        secretCode = getSecretCode(lengthSecretCode);
 
         System.out.println("Okay, let's start a game!");
         scan.nextLine();
@@ -73,5 +65,19 @@ public class Task_4 {
             }
         }
         return bulls;
+    }
+    public  static  StringBuilder getSecretCode(int length) {
+        StringBuilder str = new StringBuilder();
+        Random random = new Random();
+
+        while (str.length() < length) {
+            int randomNum = random.nextInt(9);
+
+            if (randomNum == 0 && str.length() == 0) {
+                randomNum++;
+            }
+            str.append(randomNum);
+        }
+        return  str;
     }
 }
