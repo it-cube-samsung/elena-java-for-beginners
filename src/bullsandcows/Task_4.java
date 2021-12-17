@@ -24,6 +24,7 @@ public class Task_4 {
         }
 
         System.out.println("Okay, let's start a game!");
+        scan.nextLine();
 
         while (bulls < secretCode.length()) {
             turn++;
@@ -46,7 +47,6 @@ public class Task_4 {
                 System.out.print(bulls + " bull(s).");
             }
             System.out.println(secretCode);
-
         }
 
 
