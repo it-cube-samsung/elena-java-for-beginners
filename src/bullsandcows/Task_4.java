@@ -43,7 +43,7 @@ public class Task_4 {
         }
         return bulls;
     }
-    public  static  StringBuilder getSecretCode(int length) {
+    public static  StringBuilder getSecretCode(int length) {
         StringBuilder str = new StringBuilder();
         Random random = new Random();
 
@@ -80,7 +80,7 @@ public class Task_4 {
             } else if (bulls > 0) {
                 System.out.print(bulls + " bull(s).");
             }
-            System.out.println(secretCode);
         }
+        System.out.println("Congratulations! You guessed the secret code.");
     }
 }
