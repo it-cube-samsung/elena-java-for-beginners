@@ -4,12 +4,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Task_4 {
+    static int bulls = 0;
+    static int cows = 0;
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        StringBuilder secretCode = new StringBuilder();
-        int bulls = 0;
-        int cows = 0;
-        int turn = 0;
+        StringBuilder secretCode;
+
         System.out.println("Please, enter the secret code's length:");
         int lengthSecretCode = scan.nextInt();
 
@@ -18,30 +18,7 @@ public class Task_4 {
         System.out.println("Okay, let's start a game!");
         scan.nextLine();
 
-        while (bulls < secretCode.length()) {
-            turn++;
-            System.out.println("Turn: " + turn);
-            System.out.println("> ");
-
-            String answer = scan.nextLine();
-            cows = getCows(secretCode, answer);
-            bulls = getBulls(secretCode, answer);
-
-            System.out.print("Grade: ");
-            if (bulls == 0 && cows == 0) {
-                System.out.print("None. ");
-            }
-            if ( bulls > 0  && cows > 0){
-                System.out.print(bulls + " bull(s) and " + cows + " cow(s).");
-            } else if (cows > 0) {
-                System.out.print(cows + " cow(s).");
-            } else if (bulls > 0) {
-                System.out.print(bulls + " bull(s).");
-            }
-            System.out.println(secretCode);
-        }
-
-
+        printGame(secretCode);
 
     }
 
@@ -79,5 +56,31 @@ public class Task_4 {
             str.append(randomNum);
         }
         return  str;
+    }
+    public  static void printGame (StringBuilder secretCode) {
+        int turn = 0;
+        Scanner scan = new Scanner(System.in);
+        while (bulls < secretCode.length()) {
+            turn++;
+            System.out.println("Turn: " + turn);
+            System.out.println("> ");
+
+            String answer = scan.nextLine();
+            cows = getCows(secretCode, answer);
+            bulls = getBulls(secretCode, answer);
+
+            System.out.print("Grade: ");
+            if (bulls == 0 && cows == 0) {
+                System.out.print("None. ");
+            }
+            if ( bulls > 0  && cows > 0){
+                System.out.print(bulls + " bull(s) and " + cows + " cow(s).");
+            } else if (cows > 0) {
+                System.out.print(cows + " cow(s).");
+            } else if (bulls > 0) {
+                System.out.print(bulls + " bull(s).");
+            }
+            System.out.println(secretCode);
+        }
     }
 }
