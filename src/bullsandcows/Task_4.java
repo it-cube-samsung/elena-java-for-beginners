@@ -74,11 +74,11 @@ public class Task_4 {
                 System.out.print("None. ");
             }
             if ( bulls > 0  && cows > 0){
-                System.out.print(bulls + " bull(s) and " + cows + " cow(s).");
+                System.out.println(bulls + " bull(s) and " + cows + " cow(s).");
             } else if (cows > 0) {
-                System.out.print(cows + " cow(s).");
+                System.out.println(cows + " cow(s).");
             } else if (bulls > 0) {
-                System.out.print(bulls + " bull(s).");
+                System.out.println(bulls + " bull(s).");
             }
         }
         System.out.println("Congratulations! You guessed the secret code.");
