@@ -47,33 +47,49 @@ public class Task5 {
         return bulls;
     }
     public static  StringBuilder getSecretCode(int length, int possibleSymbols) {
-StringBuilder str = new StringBuilder();
+        StringBuilder str;
         if (possibleSymbols <= 10) {
-            str = getNumbersCode(length);
+            str = getNumbersCode(length, possibleSymbols);
         } else {
-
+            str = getNumbersLettersCode(length, possibleSymbols);
         }
-
-
         return  str;
     }
 
-    public static StringBuilder getNumbersLettersCode (int length) {
-        char alfabet []= {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i','j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-
-        StringBuilder str = new StringBuilder();
-        Random random = new Random();
-
-
-        return str;
-
-    }
-
-    public static StringBuilder getNumbersCode(int length) {
+    public static StringBuilder getNumbersLettersCode (int length, int possibleSymbols) {
         StringBuilder str = new StringBuilder();
         Random random = new Random();
         while (str.length() < length) {
-            int randomNum = random.nextInt(9);
+            int numOrStr = random.nextInt(2);
+            System.out.println(numOrStr);
+
+            if (numOrStr == 0) {
+                str.append(getNumbersCode(1, 10));
+            } else {
+                str.append(getLetterCode(possibleSymbols - 10));
+            }
+
+        }
+
+        return str;
+    }
+    public static StringBuilder getLetterCode (int possibleSymbols) {
+        char alfabet []= {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i' ,'j' , 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        Random random = new Random();
+        StringBuilder str = new StringBuilder();
+
+        int index = random.nextInt(possibleSymbols);
+        str.append(alfabet[index]);
+
+        return str;
+    }
+
+
+    public static StringBuilder getNumbersCode(int length, int possibleSymbols) {
+        StringBuilder str = new StringBuilder();
+        Random random = new Random();
+        while (str.length() < length) {
+            int randomNum = random.nextInt(possibleSymbols);
             str.append(randomNum);
         }
         return str;
@@ -82,6 +98,7 @@ StringBuilder str = new StringBuilder();
         int turn = 0;
         Scanner scan = new Scanner(System.in);
         while (bulls < secretCode.length()) {
+            System.out.println(secretCode);
             turn++;
             System.out.println("Turn: " + turn);
             System.out.println("> ");
