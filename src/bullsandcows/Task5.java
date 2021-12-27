@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Task5 {
-
+    static char alfabet []= {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i' ,'j' , 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     static int bulls = 0;
     static int cows = 0;
     public static void main(String[] args) {
@@ -15,8 +15,9 @@ public class Task5 {
         int lengthSecretCode = scan.nextInt();
         System.out.println("Input the number of possible symbols in the code:");
         int possibleSymbols = scan.nextInt();
-
         secretCode = getSecretCode(lengthSecretCode, possibleSymbols);
+
+        System.out.println("The secret is prepared: " + getCodeInfo(lengthSecretCode, possibleSymbols));
 
         System.out.println("Okay, let's start a game!");
         scan.nextLine();
@@ -46,6 +47,7 @@ public class Task5 {
         }
         return bulls;
     }
+
     public static  StringBuilder getSecretCode(int length, int possibleSymbols) {
         StringBuilder str;
         if (possibleSymbols <= 10) {
@@ -61,8 +63,6 @@ public class Task5 {
         Random random = new Random();
         while (str.length() < length) {
             int numOrStr = random.nextInt(2);
-            System.out.println(numOrStr);
-
             if (numOrStr == 0) {
                 str.append(getNumbersCode(1, 10));
             } else {
@@ -74,7 +74,6 @@ public class Task5 {
         return str;
     }
     public static StringBuilder getLetterCode (int possibleSymbols) {
-        char alfabet []= {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i' ,'j' , 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         Random random = new Random();
         StringBuilder str = new StringBuilder();
 
@@ -83,7 +82,6 @@ public class Task5 {
 
         return str;
     }
-
 
     public static StringBuilder getNumbersCode(int length, int possibleSymbols) {
         StringBuilder str = new StringBuilder();
@@ -94,11 +92,11 @@ public class Task5 {
         }
         return str;
     }
+
     public  static void printGame (StringBuilder secretCode) {
         int turn = 0;
         Scanner scan = new Scanner(System.in);
         while (bulls < secretCode.length()) {
-            System.out.println(secretCode);
             turn++;
             System.out.println("Turn: " + turn);
             System.out.println("> ");
@@ -120,6 +118,32 @@ public class Task5 {
             }
         }
         System.out.println("Congratulations! You guessed the secret code.");
+    }
+
+    public static String getCodeInfo (int length, int possibleSymbols) {
+        String str = new String();
+        String stars = "";
+        while (stars.length() < length) {
+            stars += "*";
+        }
+        str += stars + " ";
+
+        int num;
+
+        if (possibleSymbols > 9) {
+            num = 9;
+        } else {
+            num = length - 1;
+        }
+
+        str = str + "(" + 0 + "-" + num + ")";
+
+        if (possibleSymbols > 10) {
+            int index = possibleSymbols - 11;
+            str += ", (a-" + alfabet[index] + ")";
+        }
+
+        return  str;
     }
 
 
