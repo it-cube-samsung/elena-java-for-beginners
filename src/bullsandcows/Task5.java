@@ -3,7 +3,8 @@ package bullsandcows;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Task_4 {
+public class Task5 {
+
     static int bulls = 0;
     static int cows = 0;
     public static void main(String[] args) {
@@ -12,8 +13,10 @@ public class Task_4 {
 
         System.out.println("Please, enter the secret code's length:");
         int lengthSecretCode = scan.nextInt();
+        System.out.println("Input the number of possible symbols in the code:");
+        int possibleSymbols = scan.nextInt();
 
-        secretCode = getSecretCode(lengthSecretCode);
+        secretCode = getSecretCode(lengthSecretCode, possibleSymbols);
 
         System.out.println("Okay, let's start a game!");
         scan.nextLine();
@@ -43,19 +46,37 @@ public class Task_4 {
         }
         return bulls;
     }
-    public static  StringBuilder getSecretCode(int length) {
+    public static  StringBuilder getSecretCode(int length, int possibleSymbols) {
+StringBuilder str = new StringBuilder();
+        if (possibleSymbols <= 10) {
+            str = getNumbersCode(length);
+        } else {
+
+        }
+
+
+        return  str;
+    }
+
+    public static StringBuilder getNumbersLettersCode (int length) {
+        char alfabet []= {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i','j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+
         StringBuilder str = new StringBuilder();
         Random random = new Random();
 
-        while (str.length() < length) {
-            int randomNum = random.nextInt(10);
 
-            if (randomNum == 0 && str.length() == 0) {
-                randomNum++;
-            }
+        return str;
+
+    }
+
+    public static StringBuilder getNumbersCode(int length) {
+        StringBuilder str = new StringBuilder();
+        Random random = new Random();
+        while (str.length() < length) {
+            int randomNum = random.nextInt(9);
             str.append(randomNum);
         }
-        return  str;
+        return str;
     }
     public  static void printGame (StringBuilder secretCode) {
         int turn = 0;
@@ -83,4 +104,6 @@ public class Task_4 {
         }
         System.out.println("Congratulations! You guessed the secret code.");
     }
+
+
 }
