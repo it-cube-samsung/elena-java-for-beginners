@@ -20,8 +20,8 @@ public class Task6 {
             System.out.printf("Error: your length isn't a valid number.");
             return;
         }
-        try {
 
+        try {
             System.out.println("Input the number of possible symbols in the code:");
             possibleSymbols = scan.nextInt();
         } catch (Exception e) {
